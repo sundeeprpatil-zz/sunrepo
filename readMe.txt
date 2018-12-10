@@ -42,11 +42,3 @@ Step 6: After finalizing the algorithm --> provide new data as needed and run th
 
 
 ---------------------------------------------------------------------------
-
-
-
-
-
-
-
- 'abcdefghijklmnopqrstuvwxyzßäöü !?#]ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ')
