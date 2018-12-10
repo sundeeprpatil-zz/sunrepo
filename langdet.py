@@ -1,17 +1,7 @@
-###
-#Step 1:
-languages_dict = {'en':0,'de':1} # covers English and German language detector
-text_sample_size = 140 #140 chars as in sms
-num_lang_samples = 3806 # min. samples from dictionary
+#please create folder structure cleaned, samples, source, traint_test
 
-#Step 2:
-
-
-
-# imports
 import os
 import re
-
 import random
 import numpy as np
 import matplotlib
@@ -26,6 +16,7 @@ import keras.optimizers
 
 
 '''
+#sentence corpus generator
 def corpus_sentence_tokens(corpus_text_file):
     while True:
         with open(corpus_text_file, encoding='utf-8') as f:
@@ -55,6 +46,8 @@ def define_alphabet():
     return small_chars,big_chars
 
 alphabet = define_alphabet()
+# set of all possible alphabets in both languages including special characters
+encoding_size = len(alphabet[0]) + len(alphabet[1])
 print (alphabet)
 
 
@@ -149,28 +142,7 @@ def get_input_row(content, start_index, sample_size):
     all_parts = counted_chars_all + counted_chars_big
     return all_parts
 
-'''
-# let's see if our processing is returning counts
-# last part calculates also input_size for DNN so this code must be run before DNN is trained
-path = os.path.join(cleaned_directory, "de_cleaned.txt")
-with open(path, 'r') as f:
-    content = f.read()
-    random_index = random.randrange(0, len(content) - 2 * text_sample_size)
-    sample_text = get_sample_text(content, random_index, text_sample_size)
-    print("1. Sample text: \n", sample_text)
-    print("2. Reference alphabet: \n", alphabet[0], alphabet[1])
-    sample_input_row = get_input_row(content, random_index, text_sample_size)
-    print("3. Sample_input_row: \n", sample_input_row)
-    input_size = len(sample_input_row)
-    print("4. Input size : ", input_size)
-    del content
 
-'''
-
-# now we have preprocessing utility functions ready. Let's use them to process each cleaned language file
-# and turn text data into numerical data samples for our neural network
-# prepare numpy array
-encoding_size = len(alphabet[0]) + len(alphabet[1])
 
 
 #output: [encoded sentence with alphabets, language_label]
