@@ -1,7 +1,6 @@
-#please create folder structure cleaned, samples, source, traint_test
 '''
 Step 1: Data preparation
-Take text, create corpus of sentences
+From the corpus download page : http://wortschatz.uni-leipzig.de/en/download/, Take text for german and english, create corpus of sentences
 Encode the sentences with count of alphabet positions
 "aaabbbcc" will be encoded as [3,3,2,0...]
 X = Scale the encoded matrix
